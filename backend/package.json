@@ -1,0 +1,20 @@
+{
+  "name": "graphql-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^2.7.0",
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2"
+  },
+  "devDependencies": {},
+  "description": ""
+}

@@ -1,0 +1,32 @@
+query movie($id: Int) {
+  movie(id: $id) {
+    title
+    popularity
+    poster_path
+    genres {
+      id
+      name
+    }
+    release_date
+    runtime
+    posters {
+      file_path
+    }
+    reviews {
+      results {
+        author
+        content
+      }
+    }
+    similar {
+      id
+      poster_path
+      title
+    }
+    cast {
+      id
+      name
+      character
+    }
+  }
+}

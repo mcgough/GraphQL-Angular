@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<p-sidebar
+  [(visible)]="searchVisible"
+  position="right"
+  [style]="{ width: '600px' }">
+  <p-dataView [value]="searchResults">
+    <p-header>
+      <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+        <div class="p-grid">
+          <label for="input">Search for Movies or People</label>
+          <input
+            class="p-col-8"
+            id="input"
+            type="text"
+            pInputText
+            (input)="onSubmit(searchForm.value)"
+            formControlName="input" />
+          <p-dropdown [options]="types" formControlName="type" class="p-col-4"></p-dropdown>
+        </div>
+      </form>
+    </p-header>
+    <ng-template let-item pTemplate="listItem">
+      <div>
+          <a [routerLink]="['/' + searchForm.value.type + '/', item.id]">{{ item.title || item.name }}</a>
+      </div>
+    </ng-template>
+  </p-dataView>
+</p-sidebar>
+<div class="mb-30">
+  <p-toolbar>
+    <div class="ui-toolbar-group-left">
+      <div class="flex align-center" style="max-height: 35px;">
+        <h1 class="mr-30">{{ title }}</h1>
+        <h3>{{ subTitle }}</h3>
+      </div>
+    </div>
+    <div class="ui-toolbar-group-right">
+      <div class="flex align-center">
+        <button pButton type="button" (click)="showSearch()" icon="pi pi-search"></button>
+      </div>
+    </div>
+  </p-toolbar>
+</div>
+
+<router-outlet></router-outlet>

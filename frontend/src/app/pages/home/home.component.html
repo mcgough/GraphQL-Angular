@@ -1,0 +1,15 @@
+<div class="p-grid p-align-strech">
+    <p-card *ngFor="let movie of popularMovies | async"
+      [routerLink]="['/movie/', movie.id]"
+      [header]="movie.title"
+      class="p-col-4 flex"
+      [style]="{ width: '360px'}"
+      styleClass="ui-card-shadow stretch">
+      <p-header>
+          <img src="Card" [src]="movie.poster_path">
+      </p-header>
+      <div>
+        {{ movie.overview }}
+      </div>
+    </p-card>
+</div>

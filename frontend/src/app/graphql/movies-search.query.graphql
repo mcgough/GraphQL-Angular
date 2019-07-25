@@ -1,0 +1,8 @@
+query MovieSearch($input: String) {
+  movieSearch(input: $input) {
+    id
+    title
+    overview
+    poster_path
+  }
+}

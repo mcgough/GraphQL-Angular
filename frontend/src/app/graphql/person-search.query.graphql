@@ -1,0 +1,6 @@
+query PersonSearch($input: String) {
+  personSearch(input: $input) {
+    id
+    name
+  }
+}

@@ -1,0 +1,9 @@
+query PopularMovies {
+  popularMovies {
+    id
+    title
+    popularity
+    poster_path
+    overview
+  }
+}

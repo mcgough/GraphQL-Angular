@@ -1,0 +1,54 @@
+<div *ngIf="loading">
+  <h1>LOADING</h1>
+</div>
+<div *ngIf="movie && !loading">
+  <div class="p-grid">
+    <img [src]="movie.poster_path" class="p-col-6" style="width: 300px">
+    <div class="p-col-6">
+      <h2>{{ movie.title }}</h2>
+      <div>
+        <p>Runtime: {{ movie.runtime }}mins</p>
+        <p>Popularity: {{ movie.popularity }}</p>
+      </div>
+    </div>
+  </div>
+  <p-accordion>
+    <p-accordionTab header="Reviews" *ngIf="movie.reviews.results.length">
+      <div>
+        <div *ngFor="let review of movie.reviews.results">
+          <p>{{ review.author }}</p>
+          <p>{{ review.content }}</p>
+        </div>
+      </div>
+    </p-accordionTab>
+    <p-accordionTab header="Posters">
+      <div>
+        <div class="p-grid">
+          <img
+            *ngFor="let poster of movie.posters"
+            [src]="poster.file_path"
+            class="p-col-3"
+            style="width: 25%" />
+        </div>
+      </div>
+    </p-accordionTab>
+    <p-accordionTab header="Similar Movies">
+      <div>
+        <div *ngFor="let movie of movie.similar">
+          <div>
+            <a [routerLink]="['/movie/', movie.id]">{{ movie.title }}</a>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+    <p-accordionTab header="Cast">
+      <div>
+        <div *ngFor="let member of movie.cast">
+          <div>
+            <a [routerLink]="['/people/', member.id]">{{ member.name }} - {{ member.character }}</a>
+          </div>
+        </div>
+      </div>
+    </p-accordionTab>
+  </p-accordion>
+</div>

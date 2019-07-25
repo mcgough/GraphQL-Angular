@@ -1,0 +1,54 @@
+<div *ngIf="loading">
+    <h1>LOADING</h1>
+  </div>
+<div *ngIf="person && !loading">
+    <div class="p-grid">
+      <img [src]="person.profile_path" class="p-col-3">
+      <div class="p-col-6">
+        <h2>{{ person.name }}</h2>
+        <div>
+          <p>Known for: {{ person.known_for_department }}</p>
+          <p>Birthday: {{ person.birthday }}</p>
+          <p>Biography: {{ person.biography }}</p>
+        </div>
+      </div>
+      <div class="p-col-12">
+        <p-accordion>
+          <p-accordionTab header="Credits">
+            <div class="p-grid">
+              <p-card
+                *ngFor="let cast of person.credits.cast"
+                [routerLink]="['/movie/', cast.id]"
+                [header]="cast.title"
+                styleClass="ui-card-shadow stretch"
+                class="p-col-6 flex">
+                <div class="p-grid">
+                  <div class="p-col-4">
+                    <div>
+                        <img [src]="cast.poster_path" style="width: 175px" />
+                    </div>
+                  </div>
+                  <div class="p-col-8">
+                    <p>Release Date: {{ cast.release_date }}</p>
+                    <p>Character: {{ cast.character }}</p>
+                    <p>Overview: {{ cast.overview }}</p>
+                  </div>
+                </div>
+              </p-card>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="Images">
+            <div class="p-grid">
+              <img
+                *ngFor="let image of person.images"
+                [src]="image.file_path"
+                class="p-col-3"
+                style="width: 25%" />
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+        <div class="p-grid">
+        </div>
+      </div>
+    </div>
+  </div>
